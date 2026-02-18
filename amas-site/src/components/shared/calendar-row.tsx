@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { format }from "date-fns";
 import { fr } from "date-fns/locale";
-import { Event } from "@prisma/client";
+import { Event, TargetAudience } from "@prisma/client";
 
 export default function CalendarRow({ day, events }: { day: Date; events: Event[] }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +12,19 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
     const handleOpen = (event: Event) => {
         setSelectedEvent(event);
         setIsOpen(true);
+    };
+
+    function takeTarget(target: TargetAudience) {
+        switch (target) {
+            case TargetAudience.all:
+                return "Tout le monde";
+            case TargetAudience.subscribers:
+                return "Membres du club";
+            case TargetAudience.visitors:
+                return "Visiteurs";
+            default:
+                return target;
+        }
     };
 
     return (
@@ -43,9 +56,9 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
                         
                         <ul className="space-y-4 text-zinc-300 mb-12">
                             <li className="flex gap-2">• <span className="font-bold">Où :</span> {selectedEvent.location}</li>
-                            <li className="flex gap-2">• <span className="font-bold">Public :</span> Tout le monde</li>
+                            <li className="flex gap-2">• <span className="font-bold">Public :</span> {takeTarget(selectedEvent.target)}</li>
                             <li className="flex gap-2 leading-relaxed">
-                                • {selectedEvent.description}
+                            • {selectedEvent.description}
                             </li>
                         </ul>
 
