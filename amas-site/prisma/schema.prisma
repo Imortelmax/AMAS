@@ -40,13 +40,14 @@ model Registration {
 }
 
 model Article {
-  id        String   @id @default(cuid())
+  id        String         @id @default(cuid())
   title     String
-  content   String   @db.Text
-  published Boolean  @default(false)
+  content   String         @db.Text
+  type      ArticleType    @default(sortie)
+  published Boolean        @default(false)
   imageUrl  ArticleImage[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
 }
 
 model ArticleImage {
@@ -54,6 +55,19 @@ model ArticleImage {
   articleId String
   url       String
   article   Article  @relation(fields: [articleId], references: id)
+}
+
+model Moto {
+  id          String   @id @default(cuid())
+  description String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum ArticleType {
+  sortie
+  realisation
 }
 
 enum TargetAudience {

@@ -3,7 +3,10 @@ import ArticleCaroussel from "@/components/shared/article-caroussel";
 
 export default async function SortiesPage() {
     const articles = await prisma.article.findMany({
-        where: { published: true },
+        where: { 
+            published: true,
+            type: "sortie"
+        },
         include: {
             imageUrl: true,
         },
