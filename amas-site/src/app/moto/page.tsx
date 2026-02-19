@@ -7,13 +7,13 @@ export default async function MotosPage() {
     });
 
     return (
-        <main className="min-h-screen pt-22 pb-20 px-4">
+        <main className="pt-22   px-4">
             <div className="max-w-4xl mx-auto text-center bg-zinc-100 p-6 border-2 rounded-2xl">
                 <h1 className="text-4xl text-center font-bold mb-4">Nos motos</h1>
 
                 <div>
                     {motos.map((moto) => (
-                        <article key={moto.id} className="p-4">
+                        <article key={moto.id} className="p-3 pt-6">
                             <div className="flex">
                                 <div>
                                     <Image 

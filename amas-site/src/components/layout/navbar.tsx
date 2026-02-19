@@ -5,7 +5,7 @@ export default function Navbar() {
         <nav className="sticky top-0 z-50 w-full border-b bg-amas-orange">
             <div className="container mx-auto flex h-30 items-center justify-between px-4">
                 <img src="/logo.png" alt="AMAS Logo" className="h-25 w-auto" /> 
-                <h1 className="text-4xl font-bold tracking-tight">Association Moto Ancienne Salernoise</h1>
+                <h1 className="text-4xl font-bold tracking-tight">Amicale Moto Ancienne Salernoise</h1>
                 <img src="/blasonsalernes.webp" alt="Blason Salernes" className="h-20 w-auto" />
             </div>
             <div>
@@ -16,7 +16,7 @@ export default function Navbar() {
                     <li className=''><Link href="/sorties">Nos sorties</Link></li>
                     <li className=''><Link href="/realisations">Nos réalisations</Link></li>
                     <li className=''><Link href="/moto">Nos motos</Link></li>
-                    <li className=''><Link href="/account">Mon Compte</Link></li>
+                    {/* <li className=''><Link href="/account">Mon Compte</Link></li> */}
                 </ul>
             </div>
         </nav>

@@ -1,6 +1,6 @@
 export default function HistoryPage() {
     return (
-        <main className="min-h-screen pt-22 pb-20 px-4">
+        <main className="  pt-22   px-4">
             <div className="max-w-4xl mx-auto text-center bg-zinc-100 p-6 border-2 rounded-2xl">
                 <h1 className="text-4xl text-center font-bold mb-2">L'histoire de notre association</h1>
                 <p className="p-6 ">

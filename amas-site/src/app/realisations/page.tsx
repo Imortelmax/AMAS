@@ -14,7 +14,7 @@ export default async function RealisationsPage() {
     });
 
     return (
-        <main className="min-h-screen pt-22 pb-20 px-4">
+        <main className="  pt-22   px-4">
             <div className="max-w-4xl mx-auto text-center bg-zinc-100 p-6 border-2 rounded-2xl">
                 <h1 className="text-4xl text-center font-bold mb-4">Nos dernières réalisations</h1>
 
