@@ -59,6 +59,8 @@ model ArticleImage {
 
 model Moto {
   id          String   @id @default(cuid())
+  model       String
+  year        Int
   description String
   imageUrl    String
   createdAt   DateTime @default(now())

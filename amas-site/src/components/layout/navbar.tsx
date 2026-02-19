@@ -16,6 +16,7 @@ export default function Navbar() {
                     <li className=''><Link href="/sorties">Nos sorties</Link></li>
                     <li className=''><Link href="/realisations">Nos réalisations</Link></li>
                     <li className=''><Link href="/moto">Nos motos</Link></li>
+                    <li className=''><Link href="/account">Mon Compte</Link></li>
                 </ul>
             </div>
         </nav>
