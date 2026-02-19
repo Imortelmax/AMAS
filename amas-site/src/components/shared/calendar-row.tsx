@@ -57,7 +57,7 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
                         <ul className="space-y-4 text-zinc-300 mb-12">
                             <li className="flex gap-2">• <span className="font-bold">Où :</span> {selectedEvent.location}</li>
                             <li className="flex gap-2">• <span className="font-bold">Public :</span> {takeTarget(selectedEvent.target)}</li>
-                            <li className="flex gap-2 leading-relaxed">
+                            <li className="flex gap-2 leading-relaxed text-left">
                             • {selectedEvent.description}
                             </li>
                         </ul>
