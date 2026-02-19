@@ -1,4 +1,5 @@
 import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 import { Open_Sans } from 'next/font/google';
 import "./globals.css";
 
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

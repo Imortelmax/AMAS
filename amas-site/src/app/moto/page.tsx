@@ -28,7 +28,7 @@ export default async function MotosPage() {
                                 <p className="p-4 max-w-xl">{moto.description}</p>
                             </div>
                             
-                            <div className="h-1 w-30 bg-black mx-auto mt-8" />
+                            {/* <div className="h-1 w-30 bg-black mx-auto mt-8" /> */}
                         </article>
                     ))}
                 </div>
