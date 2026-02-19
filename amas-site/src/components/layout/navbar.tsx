@@ -10,10 +10,10 @@ export default function Navbar() {
             </div>
             <div>
                 <ul className='flex justify-center p-4 space-x-10 text-2xl bg-navbar-bg'>
-                    <li className=''><Link href="/">Acceuil</Link></li>
+                    <li className=''><Link href="/" className='hover:bg-amber-900'>Acceuil</Link></li>
                     <li className=''><Link href="/agenda">Agenda</Link></li>
                     <li className=''><Link href="/history">Notre histoire</Link></li>
-                    <li className=''><Link href="/event">Nos sorties</Link></li>
+                    <li className=''><Link href="/sorties">Nos sorties</Link></li>
                     <li className=''><Link href="/realisations">Nos réalisations</Link></li>
                     <li className=''><Link href="/moto">Nos motos</Link></li>
                 </ul>
