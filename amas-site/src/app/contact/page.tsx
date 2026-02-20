@@ -16,10 +16,10 @@ export default function SortiesPage() {
 
     return (
         <main className="pt-22 px-4">
-            <div className="max-w-4xl mx-auto text-center bg-zinc-100 p-6 border-2 rounded-2xl">
-                <h1 className="text-4xl text-center font-bold mb-4">Pour nous contacter</h1>
+            <div className="max-w-4xl mx-auto text-center bg-zinc-100 p-6 border-2 rounded-2xl text-lg">
+                <h1 className="text-4xl text-center font-bold">Pour nous contacter</h1>
 
-                <div className="flex flex-col items-center space-y-4 pb-4">
+                <div className="flex flex-col items-center space-y-4 pb-4 m-10">
                     <div className="flex items-center space-x-2">
                         <Facebook className="w-6 h-6" />
                         <a href="https://www.facebook.com/profile.php?id=61558964401689&locale=fr_FR" target="_blank">Sur Facebook: AMAS - Amicale motos anciennes salernoise</a>
@@ -35,8 +35,9 @@ export default function SortiesPage() {
                 </div>
 
                 {/* Mail form */}
+                <h1 className="text-center m-4">Ou alors en nous envoyant un mail directement avec ce formulaire</h1>
+
                 <div className="max-w-2xl mx-auto bg-zinc-100 p-10 border-1 border-zinc-400 rounded-[40px] shadow-xl">
-                    <h1 className="text-4xl font-black uppercase text-center mb-8">Nous Contacter</h1>
 
                     {status === "success" ? (
                     <div className="bg-green-100 text-green-800 p-6 rounded-2xl text-center font-bold">
@@ -45,22 +46,22 @@ export default function SortiesPage() {
                     ) : (
                     <form action={handleAction} className="space-y-6">
                         <input 
-                            name="name" type="text" placeholder="NOM / PRÉNOM" required
-                            className="w-full p-4 bg-white border-2 border-zinc-300 rounded-2xl outline-none focus:border-black font-bold"
+                            name="name" type="text" placeholder="Nom/Prénom" required
+                            className="w-full p-2 bg-white border-2 border-zinc-300 rounded-2xl outline-none focus:border-black font-bold"
                         />
                         <input 
-                            name="email" type="email" placeholder="EMAIL" required
-                            className="w-full p-4 bg-white border-2 border-zinc-300 rounded-2xl outline-none focus:border-black font-bold"
+                            name="email" type="email" placeholder="Email" required
+                            className="w-full p-2 bg-white border-2 border-zinc-300 rounded-2xl outline-none focus:border-black font-bold"
                         />
                         <textarea 
-                            name="message" placeholder="VOTRE MESSAGE..." required rows={6}
-                            className="w-full p-4 bg-white border-2 border-zinc-300 rounded-2xl outline-none focus:border-black font-bold"
+                            name="message" placeholder="Votre messsage..." required rows={4}
+                            className="w-full p-2 bg-white border-2 border-zinc-300 rounded-2xl outline-none focus:border-black font-bold"
                         />
                         
                         <button 
                             type="submit"
                             disabled={status === "loading"}
-                            className="w-full bg-black text-white py-5 rounded-full font-black uppercase tracking-widest hover:bg-orange-600 transition disabled:bg-zinc-400"
+                            className="w-full bg-black text-white py-3 rounded-full tracking-widest hover:bg-amas-orange transition disabled:bg-zinc-400"
                         >
                             {status === "loading" ? "Envoi..." : "Envoyer le message"}
                         </button>
