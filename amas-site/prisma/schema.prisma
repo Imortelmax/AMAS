@@ -67,9 +67,29 @@ model Moto {
   updatedAt   DateTime @updatedAt
 }
 
+model Member {
+  id          String        @id @default(cuid())
+  firstname   String
+  lastname    String
+  role        MemberRole[]
+  phone       String
+  imageUrl    String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
 enum ArticleType {
   sortie
   realisation
+}
+
+enum MemberRole {
+  president
+  vice_president
+  tresorier
+  technique
+  secretaire
+  communication
 }
 
 enum TargetAudience {
