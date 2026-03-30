@@ -8,12 +8,19 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
+model Admin {
   id            String         @id @default(cuid())
-  name          String?
   email         String         @unique
-  registrations Registration[]
-  createdAt     DateTime       @default(now())
+  password      String
+}
+
+model MemberClub {
+  id             String   @id @default(cuid())
+  firstName      String
+  lastName       String
+  email          String   @unique
+  phone          String
+  createdAt      DateTime @default(now())
 }
 
 model Event {
@@ -30,13 +37,15 @@ model Event {
 
 model Registration {
   id        String   @id @default(cuid())
-  userId    String
   eventId   String
-  user      User     @relation(fields: [userId], references: id)
   event     Event    @relation(fields: [eventId], references: id)
+  firstName String
+  lastName  String
+  email     String
+  phone     String
   createdAt DateTime @default(now())
 
-  @@unique([userId, eventId])
+  @@index([eventId])
 }
 
 model Article {
