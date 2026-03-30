@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/db";
-import MembersTable from "./MembersTable";
+import EventsTable from "./EventsTable";
 
 const PER_PAGE = 10;
 
-export default async function MembresPage({
+export default async function AgendaPage({
     searchParams,
 }: {
     searchParams: Promise<{ page?: string }>;
@@ -12,20 +12,20 @@ export default async function MembresPage({
     const currentPage = Math.max(1, Number(pageParam) || 1);
     const skip = (currentPage - 1) * PER_PAGE;
 
-    const [members, total] = await Promise.all([
-        prisma.memberClub.findMany({
-            orderBy: { createdAt: "desc" },
+    const [events, total] = await Promise.all([
+        prisma.event.findMany({
+            orderBy: { date: "desc" },
             skip,
             take: PER_PAGE,
         }),
-        prisma.memberClub.count(),
+        prisma.event.count(),
     ]);
 
     const totalPages = Math.ceil(total / PER_PAGE);
 
     return (
-        <MembersTable
-            members={members}
+        <EventsTable
+            events={events}
             currentPage={currentPage}
             totalPages={totalPages}
         />

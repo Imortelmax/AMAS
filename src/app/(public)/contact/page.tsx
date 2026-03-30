@@ -2,7 +2,7 @@
 
 import { Facebook, Mail, Phone } from "lucide-react";
 import { useState } from "react";
-import { sendContactEmail } from "../action/send-email";
+import { sendContactEmail } from "../../action/send-email";
 
 export default function SortiesPage() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
