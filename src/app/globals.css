@@ -3,6 +3,7 @@
 @theme {
   /* Enregistrement de ta couleur personnalisée */
   --color-amas-orange: #D1704F;
+  --color-navbar-bg: #AA3728;
   
   /* On garde les fonts par défaut de Next.js */
   --font-sans: var(--font-geist-sans);
@@ -12,7 +13,7 @@
 :root {
   /* Utilisation de ta couleur comme fond de base */
   --background: #D1704F; 
-  --foreground: #ffffff; /* Texte en blanc pour un meilleur contraste */
+  --foreground: #000000; /* Texte en noir pour un meilleur contraste */
 }
 
 /* On peut supprimer le bloc @media (prefers-color-scheme: dark) 

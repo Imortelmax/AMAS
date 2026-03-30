@@ -9,13 +9,13 @@ export default function Navbar() {
                 <img src="/blasonsalernes.webp" alt="Blason Salernes" className="h-20 w-auto" />
             </div>
             <div>
-                <ul className='flex justify-center space-x-10 text-2xl bg-amber-900'>
-                    <li className='p-2'><Link href="/">Acceuil</Link></li>
-                    <li className='p-2'><Link href="/agenda">Agenda</Link></li>
-                    <li className='p-2'><Link href="/history">Notre histoire</Link></li>
-                    <li className='p-2'><Link href="/event">Nos sorties</Link></li>
-                    <li className='p-2'><Link href="/realisations">Nos réalisations</Link></li>
-                    <li className='p-2'><Link href="/moto">Nos motos</Link></li>
+                <ul className='flex justify-center p-4 space-x-10 text-2xl bg-navbar-bg'>
+                    <li className=''><Link href="/">Acceuil</Link></li>
+                    <li className=''><Link href="/agenda">Agenda</Link></li>
+                    <li className=''><Link href="/history">Notre histoire</Link></li>
+                    <li className=''><Link href="/event">Nos sorties</Link></li>
+                    <li className=''><Link href="/realisations">Nos réalisations</Link></li>
+                    <li className=''><Link href="/moto">Nos motos</Link></li>
                 </ul>
             </div>
         </nav>
