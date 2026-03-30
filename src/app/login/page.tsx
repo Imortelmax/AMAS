@@ -21,7 +21,7 @@ export default function AdminLoginPage() {
                 setError(result);
             } else {
                 // Si pas d'erreur, NextAuth redirige ou on force vers le dashboard
-                router.push("/admin");
+                router.push("/admin/dashboard");
                 router.refresh();
             }
         } catch (e) {
