@@ -34,7 +34,7 @@ export default function MembersTable({ members, currentPage, totalPages }: Props
                 <h1 className="text-4xl font-black uppercase">Membres du Club</h1>
                 <button
                     onClick={() => setAddOpen(true)}
-                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-orange-600 transition-all"
+                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-amas-orange transition-all"
                 >
                     + Ajouter
                 </button>

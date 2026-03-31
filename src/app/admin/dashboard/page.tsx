@@ -35,7 +35,7 @@ export default async function DashboardPage() {
                     >
                         <div className="flex items-center justify-between mb-3">
                             <p className="text-zinc-500 font-bold uppercase text-xs tracking-widest">{stat.label}</p>
-                            <stat.icon size={18} className="text-zinc-300 group-hover:text-orange-600 transition-colors" />
+                            <stat.icon size={18} className="text-zinc-300 group-hover:text-amas-orange transition-colors" />
                         </div>
                         <p className="text-5xl font-black">{stat.value}</p>
                     </Link>
@@ -45,7 +45,7 @@ export default async function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 <Link
                     href="/admin/agenda"
-                    className="flex items-center gap-4 p-6 bg-black text-white rounded-2xl hover:bg-orange-600 transition-all group"
+                    className="flex items-center gap-4 p-6 bg-black text-white rounded-2xl hover:bg-amas-orange transition-all group"
                 >
                     <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors">
                         <Calendar size={24} />
@@ -57,7 +57,7 @@ export default async function DashboardPage() {
                 </Link>
                 <Link
                     href="/admin/articles"
-                    className="flex items-center gap-4 p-6 bg-black text-white rounded-2xl hover:bg-orange-600 transition-all group"
+                    className="flex items-center gap-4 p-6 bg-black text-white rounded-2xl hover:bg-amas-orange transition-all group"
                 >
                     <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors">
                         <FileText size={24} />

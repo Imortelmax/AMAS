@@ -33,7 +33,7 @@ export default function BureauTable({ members }: { members: Member[] }) {
                 <h1 className="text-4xl font-black uppercase">Bureau</h1>
                 <button
                     onClick={() => setAddOpen(true)}
-                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-orange-600 transition-all"
+                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-amas-orange transition-all"
                 >
                     + Ajouter un membre
                 </button>
@@ -71,7 +71,7 @@ export default function BureauTable({ members }: { members: Member[] }) {
                                     <td className="px-6 py-4">
                                         <div className="flex flex-wrap gap-1">
                                             {member.role.map((r) => (
-                                                <span key={r} className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-black uppercase">
+                                                <span key={r} className="px-2 py-1 bg-amas-orange/20 text-navbar-bg rounded-full text-xs font-black uppercase">
                                                     {ROLE_LABELS[r]}
                                                 </span>
                                             ))}

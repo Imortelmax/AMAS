@@ -51,7 +51,7 @@ export default function AddMemberModal({ onClose }: { onClose: () => void }) {
                         <button type="button" onClick={onClose} className="flex-1 py-3 rounded-full border-2 border-black font-black uppercase hover:bg-zinc-100 transition-all">
                             Annuler
                         </button>
-                        <button type="submit" disabled={loading} className="flex-1 py-3 rounded-full bg-black text-white font-black uppercase hover:bg-orange-600 transition-all disabled:bg-zinc-400">
+                        <button type="submit" disabled={loading} className="flex-1 py-3 rounded-full bg-black text-white font-black uppercase hover:bg-amas-orange transition-all disabled:bg-zinc-400">
                             {loading ? "Ajout..." : "Ajouter"}
                         </button>
                     </div>

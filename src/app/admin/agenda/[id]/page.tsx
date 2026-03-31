@@ -70,7 +70,7 @@ export default async function EventDetailPage({
             <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-black uppercase">
                     Inscrits
-                    <span className="ml-3 text-orange-600">{event.registrations.length}</span>
+                    <span className="ml-3 text-amas-orange">{event.registrations.length}</span>
                 </h2>
             </div>
 

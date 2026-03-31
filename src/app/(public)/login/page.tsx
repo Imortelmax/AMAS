@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
             <div className="max-w-md w-full bg-white p-10 rounded-[40px] border-4 border-black shadow-2xl">
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-black uppercase italic tracking-tighter">
-                        AMAS <span className="text-orange-600">ADMIN</span>
+                        AMAS <span className="text-amas-orange">ADMIN</span>
                     </h1>
                     <p className="text-zinc-500 text-xs font-bold tracking-widest uppercase mt-2">
                         Espace de gestion sécurisé
@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
                     <button 
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-black text-white py-4 rounded-full font-black uppercase tracking-widest hover:bg-orange-600 transition-all disabled:bg-zinc-400 disabled:cursor-not-allowed flex justify-center items-center"
+                        className="w-full bg-black text-white py-4 rounded-full font-black uppercase tracking-widest hover:bg-amas-orange transition-all disabled:bg-zinc-400 disabled:cursor-not-allowed flex justify-center items-center"
                     >
                         {loading ? (
                             <span className="flex items-center gap-2">

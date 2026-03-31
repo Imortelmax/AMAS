@@ -16,7 +16,7 @@ const TARGET_LABELS = {
 
 const TARGET_STYLES = {
     all: "bg-zinc-100 text-zinc-700",
-    subscribers: "bg-orange-100 text-orange-700",
+    subscribers: "bg-amas-orange/20 text-navbar-bg",
     visitors: "bg-blue-100 text-blue-700",
 };
 
@@ -47,7 +47,7 @@ export default function EventsTable({ events, currentPage, totalPages }: Props) 
                 <h1 className="text-4xl font-black uppercase">Agenda</h1>
                 <button
                     onClick={() => setAddOpen(true)}
-                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-orange-600 transition-all"
+                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-amas-orange transition-all"
                 >
                     + Créer un événement
                 </button>

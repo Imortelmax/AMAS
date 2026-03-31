@@ -15,7 +15,7 @@ const TYPE_LABELS = {
 
 const TYPE_STYLES = {
     sortie: "bg-blue-100 text-blue-700",
-    realisation: "bg-orange-100 text-orange-700",
+    realisation: "bg-amas-orange/20 text-navbar-bg",
 };
 
 const TABS = [
@@ -66,7 +66,7 @@ export default function ArticlesTable({ articles, currentPage, totalPages, curre
                 <h1 className="text-4xl font-black uppercase">Articles</h1>
                 <button
                     onClick={() => setAddOpen(true)}
-                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-orange-600 transition-all"
+                    className="px-6 py-3 bg-black text-white rounded-full font-black uppercase text-sm hover:bg-amas-orange transition-all"
                 >
                     + Créer un article
                 </button>
