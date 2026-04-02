@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/db";
-import { 
-  startOfMonth, 
-  endOfMonth, 
-  eachDayOfInterval, 
-  format, 
-  addMonths, 
-  subMonths 
+import type { EventData } from "@/types";
+import {
+  startOfMonth,
+  endOfMonth,
+  eachDayOfInterval,
+  format,
+  addMonths,
+  subMonths
 } from "date-fns";
 import { fr } from "date-fns/locale";
 import CalendarRow from "@/components/shared/calendar-row";
@@ -37,7 +38,7 @@ export default async function AgendaPage({
     });
 
     // 4. Récupérer les events
-    const events = await prisma.event.findMany({
+    const events: EventData[] = await prisma.event.findMany({
         where: {
         date: {
             gte: startOfMonth(displayedDate),
