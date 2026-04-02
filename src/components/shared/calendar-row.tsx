@@ -4,10 +4,12 @@ import { useState } from "react";
 import { format }from "date-fns";
 import { fr } from "date-fns/locale";
 import { Event, TargetAudience } from "@prisma/client";
+import RegistrationModal from "@/components/shared/registration-modal";
 
 export default function CalendarRow({ day, events }: { day: Date; events: Event[] }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+    const [registerEvent, setRegisterEvent] = useState<Event | null>(null);
 
     const handleOpen = (event: Event) => {
         setSelectedEvent(event);
@@ -63,10 +65,16 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
                         </ul>
 
                         <div className="flex flex-col gap-4">
-                            <button className="text-right font-bold hover:text-amas-orange transition uppercase tracking-widest text-sm">
+                            <button
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    setRegisterEvent(selectedEvent);
+                                }}
+                                className="text-right font-bold hover:text-amas-orange transition uppercase tracking-widest text-sm"
+                            >
                                 S'inscrire
                             </button>
-                            <button 
+                            <button
                                 onClick={() => setIsOpen(false)}
                                 className="absolute top-6 right-8 text-zinc-500 hover:text-white"
                             >
@@ -75,6 +83,15 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
                         </div>
                     </div>
                 </div>
+            )}
+
+            {registerEvent && (
+                <RegistrationModal
+                    eventId={registerEvent.id}
+                    eventTitle={registerEvent.title}
+                    eventTarget={registerEvent.target}
+                    onClose={() => setRegisterEvent(null)}
+                />
             )}
         </>
     );
