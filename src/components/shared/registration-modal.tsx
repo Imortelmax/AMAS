@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TargetAudience } from "@prisma/client";
+import type { TargetAudience } from "@/types";
 
 interface RegistrationModalProps {
     eventId: string;

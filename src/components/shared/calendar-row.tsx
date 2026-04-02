@@ -3,26 +3,26 @@
 import { useState } from "react";
 import { format }from "date-fns";
 import { fr } from "date-fns/locale";
-import { Event, TargetAudience } from "@prisma/client";
+import type { EventData, TargetAudience } from "@/types";
 import RegistrationModal from "@/components/shared/registration-modal";
 
-export default function CalendarRow({ day, events }: { day: Date; events: Event[] }) {
+export default function CalendarRow({ day, events }: { day: Date; events: EventData[] }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-    const [registerEvent, setRegisterEvent] = useState<Event | null>(null);
+    const [selectedEventData, setSelectedEventData] = useState<EventData | null>(null);
+    const [registerEventData, setRegisterEventData] = useState<EventData | null>(null);
 
-    const handleOpen = (event: Event) => {
-        setSelectedEvent(event);
+    const handleOpen = (event: EventData) => {
+        setSelectedEventData(event);
         setIsOpen(true);
     };
 
     function takeTarget(target: TargetAudience) {
         switch (target) {
-            case TargetAudience.all:
+            case "all":
                 return "Tout le monde";
-            case TargetAudience.subscribers:
+            case "subscribers":
                 return "Membres du club";
-            case TargetAudience.visitors:
+            case "visitors":
                 return "Visiteurs";
             default:
                 return target;
@@ -49,18 +49,18 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
             </div>
 
             {/* MODALE (Style inspiré de ta maquette noire) */}
-            {isOpen && selectedEvent && (
+            {isOpen && selectedEventData && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
                     <div className="bg-black text-white w-full max-w-md rounded-[40px] p-10 relative border-2 border-white/20">
                         <h2 className="text-2xl font-bold text-center mb-8 uppercase tracking-tight">
-                            {selectedEvent.title}
+                            {selectedEventData.title}
                         </h2>
                         
                         <ul className="space-y-4 text-zinc-300 mb-12">
-                            <li className="flex gap-2">• <span className="font-bold">Où :</span> {selectedEvent.location}</li>
-                            <li className="flex gap-2">• <span className="font-bold">Public :</span> {takeTarget(selectedEvent.target)}</li>
+                            <li className="flex gap-2">• <span className="font-bold">Où :</span> {selectedEventData.location}</li>
+                            <li className="flex gap-2">• <span className="font-bold">Public :</span> {takeTarget(selectedEventData.target)}</li>
                             <li className="flex gap-2 leading-relaxed text-left">
-                            • {selectedEvent.description}
+                            • {selectedEventData.description}
                             </li>
                         </ul>
 
@@ -68,7 +68,7 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
                             <button
                                 onClick={() => {
                                     setIsOpen(false);
-                                    setRegisterEvent(selectedEvent);
+                                    setRegisterEventData(selectedEventData);
                                 }}
                                 className="text-right font-bold hover:text-amas-orange transition uppercase tracking-widest text-sm"
                             >
@@ -86,12 +86,12 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
                 </div>
             )}
 
-            {registerEvent && (
+            {registerEventData && (
                 <RegistrationModal
-                    eventId={registerEvent.id}
-                    eventTitle={registerEvent.title}
-                    eventTarget={registerEvent.target}
-                    onClose={() => setRegisterEvent(null)}
+                    eventId={registerEventData.id}
+                    eventTitle={registerEventData.title}
+                    eventTarget={registerEventData.target}
+                    onClose={() => setRegisterEventData(null)}
                 />
             )}
         </>

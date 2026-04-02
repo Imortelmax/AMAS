@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Calendar, MapPin } from "lucide-react";
-import { TargetAudience } from "@prisma/client";
+import type { TargetAudience } from "@/types";
 import RegistrationModal from "@/components/shared/registration-modal";
 
 interface EventCardProps {
