@@ -7,7 +7,7 @@ export default async function BureauPage() {
 
     // Helper pour filtrer
     const getByRole = (role: MemberRole) =>
-        members.filter((m) => (m.role as MemberRole[]).includes(role));
+        members.filter((m: { role: string[] }) => m.role.includes(role));
 
     // On prépare les niveaux
     const level1 = getByRole("president");
