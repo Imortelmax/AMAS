@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  /* Enregistrement de ta couleur personnalisée */
+  --color-amas-orange: #D1704F;
+  --color-navbar-bg: #AA3728;
+  
+  /* On garde les fonts par défaut de Next.js */
+  --font-sans: var(--font-open-sans);
+  --font-mono: var(--font-open-sans);
+}
+
+:root {
+  /* Utilisation de ta couleur comme fond de base */
+  --background: #D1704F; 
+  --foreground: #000000; /* Texte en noir pour un meilleur contraste */
+}
+
+/* On peut supprimer le bloc @media (prefers-color-scheme: dark) 
+   si tu veux que le site reste orange même en mode sombre */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

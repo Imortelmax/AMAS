@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  password      String
+}
+
+model MemberClub {
+  id             String   @id @default(cuid())
+  firstName      String
+  lastName       String
+  email          String   @unique
+  phone          String
+  createdAt      DateTime @default(now())
+}
+
+model Event {
+  id            String         @id @default(cuid())
+  title         String
+  description   String
+  date          DateTime
+  location      String
+  target        TargetAudience @default(all)
+  registrations Registration[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Registration {
+  id        String   @id @default(cuid())
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: id)
+  firstName String
+  lastName  String
+  email     String
+  phone     String
+  createdAt DateTime @default(now())
+
+  @@index([eventId])
+}
+
+model Article {
+  id        String         @id @default(cuid())
+  title     String
+  content   String         @db.Text
+  type      ArticleType    @default(sortie)
+  published Boolean        @default(false)
+  imageUrl  ArticleImage[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model ArticleImage {
+  id        String   @id @default(cuid())
+  articleId String
+  url       String
+  article   Article  @relation(fields: [articleId], references: id)
+}
+
+model Moto {
+  id          String      @id @default(cuid())
+  model       String
+  year        Int
+  description String
+  images      MotoImage[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model MotoImage {
+  id     String @id @default(cuid())
+  motoId String
+  url    String
+  moto   Moto   @relation(fields: [motoId], references: [id])
+}
+
+model Member {
+  id          String        @id @default(cuid())
+  firstname   String
+  lastname    String
+  role        MemberRole[]
+  phone       String
+  imageUrl    String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+enum ArticleType {
+  sortie
+  realisation
+}
+
+enum MemberRole {
+  president
+  vice_president
+  tresorier
+  technique
+  secretaire
+  communication
+}
+
+enum TargetAudience {
+  all
+  subscribers
+  visitors
+}
