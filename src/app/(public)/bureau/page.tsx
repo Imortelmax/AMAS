@@ -2,12 +2,21 @@ import { prisma } from "@/lib/db";
 import Image from "next/image";
 import type { MemberRole } from "@/types";
 
+type BureauMember = {
+    id: string;
+    firstname: string;
+    lastname: string;
+    role: string[];
+    phone: string;
+    imageUrl: string;
+};
+
 export default async function BureauPage() {
-    const members = await prisma.member.findMany();
+    const members = await prisma.member.findMany() as BureauMember[];
 
     // Helper pour filtrer
     const getByRole = (role: MemberRole) =>
-        members.filter((m: { role: string[] }) => m.role.includes(role));
+        members.filter((m) => m.role.includes(role));
 
     // On prépare les niveaux
     const level1 = getByRole("president");
@@ -53,7 +62,7 @@ export default async function BureauPage() {
                                 <Image src={m.imageUrl} alt={m.firstname} fill className="object-cover" />
                             </div>
                             <h3 className="text-xl font-bold uppercase">{m.firstname} {m.lastname}</h3>
-                            <p className="text-sm font-bold text-zinc-500 uppercase">{getRoleLabel(m.role[0])}</p>
+                            <p className="text-sm font-bold text-zinc-500 uppercase">{getRoleLabel(m.role[0] as MemberRole)}</p>
                         </div>
                     ))}
                 </section>
@@ -66,7 +75,7 @@ export default async function BureauPage() {
                             </div>
                             <div>
                                 <h4 className="font-bold uppercase leading-tight">{m.firstname} {m.lastname}</h4>
-                                <p className="text-xs font-bold text-orange-600 uppercase">{getRoleLabel(m.role[0])}</p>
+                                <p className="text-xs font-bold text-orange-600 uppercase">{getRoleLabel(m.role[0] as MemberRole)}</p>
                             </div>
                         </div>
                     ))}

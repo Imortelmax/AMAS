@@ -1,10 +1,14 @@
 import { prisma } from "@/lib/db";
 import BureauTable from "./BureauTable";
+import type { MemberRole } from "@/types";
+import type { Member } from "@prisma/client";
+
+type MemberWithTypedRole = Omit<Member, "role"> & { role: MemberRole[] };
 
 export default async function BureauManagePage() {
     const members = await prisma.member.findMany({
         orderBy: { createdAt: "asc" },
     });
 
-    return <BureauTable members={members} />;
+    return <BureauTable members={members as MemberWithTypedRole[]} />;
 }

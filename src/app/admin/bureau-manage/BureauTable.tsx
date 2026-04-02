@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import type { Member } from "@prisma/client";
 import type { MemberRole } from "@/types";
+
+type MemberWithTypedRole = Omit<Member, "role"> & { role: MemberRole[] };
 import { deleteBureauMember } from "./actions";
 import BureauModal from "./BureauModal";
 
@@ -17,10 +19,10 @@ const ROLE_LABELS: Record<MemberRole, string> = {
     communication: "Communication",
 };
 
-export default function BureauTable({ members }: { members: Member[] }) {
+export default function BureauTable({ members }: { members: MemberWithTypedRole[] }) {
     const router = useRouter();
     const [addOpen, setAddOpen] = useState(false);
-    const [editMember, setEditMember] = useState<Member | null>(null);
+    const [editMember, setEditMember] = useState<MemberWithTypedRole | null>(null);
 
     async function handleDelete(id: string, name: string) {
         if (!confirm(`Supprimer ${name} du bureau ?`)) return;

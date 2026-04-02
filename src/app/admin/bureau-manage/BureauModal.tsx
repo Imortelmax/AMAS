@@ -9,6 +9,8 @@ import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
 import type { Member } from "@prisma/client";
 import type { MemberRole } from "@/types";
 
+type MemberWithTypedRole = Omit<Member, "role"> & { role: MemberRole[] };
+
 const ROLES: { value: MemberRole; label: string }[] = [
     { value: "president", label: "Président" },
     { value: "vice_president", label: "Vice-Président" },
@@ -19,7 +21,7 @@ const ROLES: { value: MemberRole; label: string }[] = [
 ];
 
 type Props = {
-    member?: Member;
+    member?: MemberWithTypedRole;
     onClose: () => void;
 };
 

@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import type { Event } from "@prisma/client";
+import type { TargetAudience } from "@/types";
 import { deleteEvent } from "./actions";
 import AddEventModal from "./AddEventModal";
 import EditEventModal from "./EditEventModal";
 
-const TARGET_LABELS = {
+const TARGET_LABELS: Record<TargetAudience, string> = {
     all: "Tout le monde",
     subscribers: "Membres du club",
     visitors: "Visiteurs",
@@ -81,7 +82,7 @@ export default function EventsTable({ events, currentPage, totalPages }: Props) 
                                     </td>
                                     <td className="px-6 py-4 text-sm text-zinc-600">{event.location}</td>
                                     <td className="px-6 py-4 text-sm text-zinc-600">
-                                        {TARGET_LABELS[event.target]}
+                                        {TARGET_LABELS[event.target as TargetAudience]}
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="flex gap-2">
