@@ -116,8 +116,9 @@ export default function MotoModal({ moto, onClose }: Props) {
                                 resourceType: "image",
                             }}
                             onSuccess={(result) => {
-                                if (result.info && typeof result.info === "object" && "secure_url" in result.info) {
-                                    setImages((prev) => [...prev, result.info.secure_url as string]);
+                                const info = result.info;
+                                if (info && typeof info === "object" && "secure_url" in info) {
+                                    setImages((prev) => [...prev, (info as { secure_url: string }).secure_url]);
                                 }
                             }}
                         >
