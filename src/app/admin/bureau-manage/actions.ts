@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/db";
-import { MemberRole } from "@prisma/client";
+import type { MemberRole } from "@/types";
 import { revalidatePath } from "next/cache";
 
 export async function addBureauMember(formData: FormData) {

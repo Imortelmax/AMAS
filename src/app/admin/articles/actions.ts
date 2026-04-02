@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/db";
-import { ArticleType } from "@prisma/client";
+import type { ArticleType } from "@/types";
 import { revalidatePath } from "next/cache";
 
 export async function addArticle(formData: FormData) {

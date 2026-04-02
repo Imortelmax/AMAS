@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import { ArticleType } from "@prisma/client";
+import type { ArticleType } from "@/types";
 import ArticlesTable from "./ArticlesTable";
 
 const PER_PAGE = 10;

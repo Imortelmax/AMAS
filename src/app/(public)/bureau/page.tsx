@@ -1,18 +1,18 @@
 import { prisma } from "@/lib/db";
 import Image from "next/image";
-import { MemberRole } from "@prisma/client";
+import type { MemberRole } from "@/types";
 
 export default async function BureauPage() {
     const members = await prisma.member.findMany();
 
     // Helper pour filtrer
-    const getByRole = (role: MemberRole) => 
-        members.filter((m) => m.role.includes(role));
+    const getByRole = (role: MemberRole) =>
+        members.filter((m) => (m.role as MemberRole[]).includes(role));
 
     // On prépare les niveaux
-    const level1 = getByRole(MemberRole.president);
-    const level2 = [...getByRole(MemberRole.vice_president), ...getByRole(MemberRole.secretaire), ...getByRole(MemberRole.tresorier)];
-    const level3 = [...getByRole(MemberRole.technique), ...getByRole(MemberRole.communication)];
+    const level1 = getByRole("president");
+    const level2 = [...getByRole("vice_president"), ...getByRole("secretaire"), ...getByRole("tresorier")];
+    const level3 = [...getByRole("technique"), ...getByRole("communication")];
 
     const getRoleLabel = (role: MemberRole) => {
         const labels: Record<MemberRole, string> = {

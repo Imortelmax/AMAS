@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/db";
-import { TargetAudience } from "@prisma/client";
+import type { TargetAudience } from "@/types";
 import { revalidatePath } from "next/cache";
 
 export async function addEvent(formData: FormData) {

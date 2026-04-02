@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import type { Member, MemberRole } from "@prisma/client";
+import type { Member } from "@prisma/client";
+import type { MemberRole } from "@/types";
 import { deleteBureauMember } from "./actions";
 import BureauModal from "./BureauModal";
 

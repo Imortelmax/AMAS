@@ -6,7 +6,8 @@ import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
 import { addBureauMember, updateBureauMember } from "./actions";
 import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
-import type { Member, MemberRole } from "@prisma/client";
+import type { Member } from "@prisma/client";
+import type { MemberRole } from "@/types";
 
 const ROLES: { value: MemberRole; label: string }[] = [
     { value: "president", label: "Président" },
