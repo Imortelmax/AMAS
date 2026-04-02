@@ -1,7 +1,15 @@
 import { prisma } from "@/lib/db";
 
+type MotoWithImages = {
+    id: string;
+    model: string;
+    year: number;
+    description: string;
+    images: { id: string; url: string }[];
+};
+
 export default async function MotosPage() {
-    const motos = await prisma.moto.findMany({
+    const motos: MotoWithImages[] = await prisma.moto.findMany({
         orderBy: { createdAt: "desc" },
         include: { images: true },
     });
