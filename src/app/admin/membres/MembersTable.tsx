@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { MemberClub } from "@prisma/client";
+import type { MemberClub } from "@/types";
 import { deleteMember } from "./actions";
 import AddMemberModal from "./AddMemberModal";
 import EditMemberModal from "./EditMemberModal";

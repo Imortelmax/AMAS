@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Moto, MotoImage } from "@prisma/client";
+import type { Moto, MotoImage } from "@/types";
 import { deleteMoto } from "./actions";
 import MotoModal from "./MotoModal";
 

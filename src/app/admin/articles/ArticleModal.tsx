@@ -5,7 +5,7 @@ import { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { addArticle, updateArticle } from "./actions";
 import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
-import type { Article, ArticleImage } from "@prisma/client";
+import type { Article, ArticleImage } from "@/types";
 
 type ArticleWithImages = Article & { imageUrl: ArticleImage[] };
 

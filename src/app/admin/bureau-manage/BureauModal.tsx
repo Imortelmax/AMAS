@@ -6,7 +6,7 @@ import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
 import { addBureauMember, updateBureauMember } from "./actions";
 import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
-import type { Member } from "@prisma/client";
+import type { Member } from "@/types";
 import type { MemberRole } from "@/types";
 
 type MemberWithTypedRole = Omit<Member, "role"> & { role: MemberRole[] };

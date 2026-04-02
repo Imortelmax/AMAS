@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { updateMember } from "./actions";
-import type { MemberClub } from "@prisma/client";
+import type { MemberClub } from "@/types";
 
 export default function EditMemberModal({ member, onClose }: { member: MemberClub; onClose: () => void }) {
     const router = useRouter();

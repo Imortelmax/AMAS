@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Article, ArticleImage } from "@prisma/client";
+import type { Article, ArticleImage } from "@/types";
 import { deleteArticle, togglePublished } from "./actions";
 import ArticleModal from "./ArticleModal";
 

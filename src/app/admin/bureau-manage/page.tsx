@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import BureauTable from "./BureauTable";
 import type { MemberRole } from "@/types";
-import type { Member } from "@prisma/client";
+import type { Member } from "@/types";
 
 type MemberWithTypedRole = Omit<Member, "role"> & { role: MemberRole[] };
 

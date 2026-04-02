@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { updateEvent } from "./actions";
-import type { Event } from "@prisma/client";
+import type { EventData as Event } from "@/types";
 
 const TARGET_LABELS = {
     all: "Tout le monde",

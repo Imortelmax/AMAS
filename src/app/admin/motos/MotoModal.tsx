@@ -5,7 +5,7 @@ import { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { addMoto, updateMoto } from "./actions";
 import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
-import type { Moto, MotoImage } from "@prisma/client";
+import type { Moto, MotoImage } from "@/types";
 
 type MotoWithImages = Moto & { images: MotoImage[] };
 

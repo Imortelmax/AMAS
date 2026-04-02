@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import type { Event } from "@prisma/client";
-import type { TargetAudience } from "@/types";
+import type { EventData as Event, TargetAudience } from "@/types";
 import { deleteEvent } from "./actions";
 import AddEventModal from "./AddEventModal";
 import EditEventModal from "./EditEventModal";

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import type { Member } from "@prisma/client";
+import type { Member } from "@/types";
 import type { MemberRole } from "@/types";
 
 type MemberWithTypedRole = Omit<Member, "role"> & { role: MemberRole[] };
