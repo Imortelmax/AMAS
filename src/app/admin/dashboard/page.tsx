@@ -2,8 +2,15 @@ import { prisma } from "@/lib/db";
 import Link from "next/link";
 import { Calendar, Users, FileText, UserCircle } from "lucide-react";
 
+type UpcomingEvent = {
+    id: string;
+    title: string;
+    date: Date;
+    location: string;
+};
+
 export default async function DashboardPage() {
-    const [memberCount, eventCount, articleCount, bureauCount, upcomingEvents] = await Promise.all([
+    const [memberCount, eventCount, articleCount, bureauCount, upcomingEventsRaw] = await Promise.all([
         prisma.memberClub.count(),
         prisma.event.count(),
         prisma.article.count({ where: { published: true } }),
@@ -14,6 +21,8 @@ export default async function DashboardPage() {
             take: 3,
         }),
     ]);
+
+    const upcomingEvents = upcomingEventsRaw as UpcomingEvent[];
 
     const stats = [
         { label: "Membres du club", value: memberCount, icon: Users, href: "/admin/membres" },

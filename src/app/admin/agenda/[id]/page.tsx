@@ -1,11 +1,31 @@
 import { prisma } from "@/lib/db";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { TargetAudience } from "@/types";
 
-const TARGET_LABELS = {
+const TARGET_LABELS: Record<TargetAudience, string> = {
     all: "Tout le monde",
     subscribers: "Membres du club",
     visitors: "Visiteurs",
+};
+
+type Registration = {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    createdAt: Date;
+};
+
+type EventWithRegistrations = {
+    id: string;
+    title: string;
+    description: string;
+    date: Date;
+    location: string;
+    target: string;
+    registrations: Registration[];
 };
 
 export default async function EventDetailPage({
@@ -22,7 +42,7 @@ export default async function EventDetailPage({
                 orderBy: { createdAt: "asc" },
             },
         },
-    });
+    }) as EventWithRegistrations | null;
 
     if (!event) notFound();
 
@@ -58,7 +78,7 @@ export default async function EventDetailPage({
                 </div>
                 <div className="bg-white p-6 rounded-2xl border-2 border-zinc-200">
                     <p className="text-xs font-black uppercase text-zinc-400 mb-1">Audience</p>
-                    <p className="font-bold">{TARGET_LABELS[event.target]}</p>
+                    <p className="font-bold">{TARGET_LABELS[event.target as TargetAudience]}</p>
                 </div>
             </div>
 

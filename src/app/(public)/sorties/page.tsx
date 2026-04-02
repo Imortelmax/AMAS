@@ -1,8 +1,16 @@
 import { prisma } from "@/lib/db";
 import ArticleCaroussel from "@/components/shared/article-caroussel";
 
+type ArticleWithImages = {
+    id: string;
+    title: string;
+    content: string;
+    createdAt: Date;
+    imageUrl: { id: string; url: string }[];
+};
+
 export default async function SortiesPage() {
-    const articles = await prisma.article.findMany({
+    const articles: ArticleWithImages[] = await prisma.article.findMany({
         where: { 
             published: true,
             type: "sortie"
