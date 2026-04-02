@@ -3,9 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
 }
 
 model Admin {
@@ -67,13 +65,20 @@ model ArticleImage {
 }
 
 model Moto {
-  id          String   @id @default(cuid())
+  id          String      @id @default(cuid())
   model       String
   year        Int
   description String
-  imageUrl    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  images      MotoImage[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model MotoImage {
+  id     String @id @default(cuid())
+  motoId String
+  url    String
+  moto   Moto   @relation(fields: [motoId], references: [id])
 }
 
 model Member {

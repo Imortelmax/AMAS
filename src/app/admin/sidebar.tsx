@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  Calendar, 
-  Users, 
-  FileText, 
+import {
+  LayoutDashboard,
+  Calendar,
+  Users,
+  FileText,
   LogOut,
-  UserCircle 
+  UserCircle,
+  Bike,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
@@ -17,6 +18,7 @@ const menuItems = [
   { name: "Agenda", href: "/admin/agenda", icon: Calendar },
   { name: "Membres du Club", href: "/admin/membres", icon: Users },
   { name: "Articles", href: "/admin/articles", icon: FileText },
+  { name: "Motos", href: "/admin/motos", icon: Bike },
   { name: "Bureau", href: "/admin/bureau-manage", icon: UserCircle },
 ];
 
@@ -39,8 +41,8 @@ export default function AdminSidebar() {
               key={item.href}
               href={item.href}
               className={`flex items-center gap-4 px-4 py-4 rounded-2xl font-bold tracking-tight transition-all ${
-                isActive 
-                  ? "bg-navbar-bg text-white" 
+                isActive
+                  ? "bg-navbar-bg text-white"
                   : "hover:bg-zinc-900 hover:text-white"
               }`}
             >
