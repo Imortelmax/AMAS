@@ -14,11 +14,6 @@ const TARGET_LABELS = {
     visitors: "Visiteurs",
 };
 
-const TARGET_STYLES = {
-    all: "bg-zinc-100 text-zinc-700",
-    subscribers: "bg-amas-orange/20 text-navbar-bg",
-    visitors: "bg-blue-100 text-blue-700",
-};
 
 type Props = {
     events: Event[];
@@ -85,10 +80,8 @@ export default function EventsTable({ events, currentPage, totalPages }: Props) 
                                         })}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-zinc-600">{event.location}</td>
-                                    <td className="px-6 py-4">
-                                        <span className={`px-3 py-1 rounded-full text-xs font-black uppercase ${TARGET_STYLES[event.target]}`}>
-                                            {TARGET_LABELS[event.target]}
-                                        </span>
+                                    <td className="px-6 py-4 text-sm text-zinc-600">
+                                        {TARGET_LABELS[event.target]}
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="flex gap-2">

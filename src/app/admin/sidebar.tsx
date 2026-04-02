@@ -26,8 +26,8 @@ export default function AdminSidebar() {
   return (
     <aside className="w-72 bg-amas-orange text-black p-6 flex flex-col h-screen sticky top-0">
       <div className="mb-12 px-4">
-        <h2 className="text-2xl font-black italic tracking-tighter">
-          AMAS <span className="">ADMIN</span>
+        <h2 className="text-2xl font-bold tracking-tight">
+          AMAS ADMIN
         </h2>
       </div>
 
@@ -38,7 +38,7 @@ export default function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-4 px-4 py-4 rounded-2xl font-bold transition-all ${
+              className={`flex items-center gap-4 px-4 py-4 rounded-2xl font-bold tracking-tight transition-all ${
                 isActive 
                   ? "bg-navbar-bg text-white" 
                   : "hover:bg-zinc-900 hover:text-white"
@@ -53,7 +53,7 @@ export default function AdminSidebar() {
 
       <button
         onClick={() => signOut({ callbackUrl: "/" })}
-        className="flex items-center gap-4 px-4 py-4 rounded-2xl font-bold text-red-500 hover:bg-red-500/10 transition-all mt-auto"
+        className="flex items-center gap-4 px-4 py-4 rounded-2xl font-bold tracking-tight text-red-500 hover:bg-red-500/10 transition-all mt-auto"
       >
         <LogOut size={22} />
         Déconnexion

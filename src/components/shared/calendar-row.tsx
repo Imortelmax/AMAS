@@ -76,9 +76,10 @@ export default function CalendarRow({ day, events }: { day: Date; events: Event[
                             </button>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="absolute top-6 right-8 text-zinc-500 hover:text-white"
+                                className="absolute top-6 right-8 text-zinc-500 hover:text-white text-xl leading-none"
+                                aria-label="Fermer"
                             >
-                                Fermer
+                                ✕
                             </button>
                         </div>
                     </div>
