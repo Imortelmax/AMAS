@@ -19,6 +19,8 @@ export async function addArticle(formData: FormData) {
         },
     });
     revalidatePath("/admin/articles");
+    revalidatePath("/sorties");
+    revalidatePath("/realisations");
 }
 
 export async function updateArticle(id: string, formData: FormData) {
@@ -40,12 +42,16 @@ export async function updateArticle(id: string, formData: FormData) {
         }),
     ]);
     revalidatePath("/admin/articles");
+    revalidatePath("/sorties");
+    revalidatePath("/realisations");
 }
 
 export async function deleteArticle(id: string) {
     await prisma.articleImage.deleteMany({ where: { articleId: id } });
     await prisma.article.delete({ where: { id } });
     revalidatePath("/admin/articles");
+    revalidatePath("/sorties");
+    revalidatePath("/realisations");
 }
 
 export async function togglePublished(id: string, published: boolean) {
@@ -54,4 +60,6 @@ export async function togglePublished(id: string, published: boolean) {
         data: { published },
     });
     revalidatePath("/admin/articles");
+    revalidatePath("/sorties");
+    revalidatePath("/realisations");
 }
