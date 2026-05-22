@@ -24,7 +24,8 @@ export default function AdminLoginPage() {
                 router.push("/admin/dashboard");
                 router.refresh();
             }
-        } catch (e) {
+        } catch (e: any) {
+            if (e?.digest?.startsWith("NEXT_REDIRECT")) return;
             setError("Une erreur inattendue est survenue.");
         } finally {
             setLoading(false);
