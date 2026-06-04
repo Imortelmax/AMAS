@@ -28,6 +28,8 @@ model Event {
   date          DateTime
   location      String
   target        TargetAudience @default(all)
+  fileUrl       String?
+  fileName      String?
   registrations Registration[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt

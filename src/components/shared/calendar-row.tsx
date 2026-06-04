@@ -65,6 +65,16 @@ export default function CalendarRow({ day, events }: { day: Date; events: EventD
                         </ul>
 
                         <div className="flex flex-col gap-4">
+                            {selectedEventData.fileUrl && selectedEventData.fileName && (
+                                <a
+                                    href={selectedEventData.fileUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-sm font-bold text-amas-orange hover:opacity-80 transition"
+                                >
+                                    📄 {selectedEventData.fileName}
+                                </a>
+                            )}
                             <button
                                 onClick={() => {
                                     setIsOpen(false);

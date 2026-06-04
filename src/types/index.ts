@@ -11,6 +11,8 @@ export type EventData = {
     date: Date;
     location: string;
     target: TargetAudience;
+    fileUrl?: string | null;
+    fileName?: string | null;
     createdAt?: Date;
     updatedAt?: Date;
 };

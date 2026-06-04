@@ -5,6 +5,9 @@ import type { TargetAudience } from "@/types";
 import { revalidatePath } from "next/cache";
 
 export async function addEvent(formData: FormData) {
+    const fileUrl = formData.get("fileUrl") as string | null;
+    const fileName = formData.get("fileName") as string | null;
+
     await prisma.event.create({
         data: {
             title: formData.get("title") as string,
@@ -12,12 +15,17 @@ export async function addEvent(formData: FormData) {
             date: new Date(formData.get("date") as string),
             location: formData.get("location") as string,
             target: formData.get("target") as TargetAudience,
+            fileUrl: fileUrl || null,
+            fileName: fileName || null,
         },
     });
     revalidatePath("/admin/agenda");
 }
 
 export async function updateEvent(id: string, formData: FormData) {
+    const fileUrl = formData.get("fileUrl") as string | null;
+    const fileName = formData.get("fileName") as string | null;
+
     await prisma.event.update({
         where: { id },
         data: {
@@ -26,6 +34,8 @@ export async function updateEvent(id: string, formData: FormData) {
             date: new Date(formData.get("date") as string),
             location: formData.get("location") as string,
             target: formData.get("target") as TargetAudience,
+            fileUrl: fileUrl || null,
+            fileName: fileName || null,
         },
     });
     revalidatePath("/admin/agenda");
