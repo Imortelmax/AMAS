@@ -23,13 +23,13 @@ export default function ArticleCaroussel({ images, title }: { images: ImageItem[
     };
 
     return (
-        <div className="relative group w-full max-w-[400px] mx-auto my-6">
-            <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+        <div className="relative group w-full max-w-[600px] mx-auto my-6">
+            <div className="aspect-[4/3] relative overflow-hidden rounded-lg bg-zinc-200">
                 <Image
                     src={images[currentIndex].url}
                     alt={`${title} - image ${currentIndex + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     priority={currentIndex === 0}
                 />
             </div>

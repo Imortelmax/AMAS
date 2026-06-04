@@ -22,21 +22,21 @@ export default async function MotosPage() {
                 <div>
                     {motos.map((moto) => (
                         <article key={moto.id} className="p-3 pt-6">
-                            <div className="flex">
-                                <div>
+                            <div className="flex flex-col sm:flex-row gap-4 items-start">
+                                <div className="w-full sm:w-[320px] shrink-0">
                                     {moto.images[0] && (
-                                        // eslint-disable-next-line @next/next/no-img-element
-                                        <img
-                                            src={moto.images[0].url}
-                                            alt={moto.model}
-                                            width={400}
-                                            height={300}
-                                            className="justify-center mx-auto rounded-lg object-cover"
-                                        />
+                                        <div className="aspect-[4/3] relative rounded-lg overflow-hidden bg-zinc-200">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img
+                                                src={moto.images[0].url}
+                                                alt={moto.model}
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </div>
                                     )}
-                                    <p>{moto.model} ({moto.year})</p>
+                                    <p className="mt-1 font-medium">{moto.model} ({moto.year})</p>
                                 </div>
-                                <p className="p-4 max-w-xl">{moto.description}</p>
+                                <p className="p-2 text-left">{moto.description}</p>
                             </div>
                         </article>
                     ))}
