@@ -34,7 +34,7 @@ export default function EventModal({ event, onClose }: EventModalProps) {
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-            <div className="bg-black text-white w-full max-w-md rounded-[40px] p-10 relative border-2 border-white/20">
+            <div className="bg-black text-white w-full max-w-md rounded-2xl sm:rounded-[40px] p-6 sm:p-10 relative border-2 border-white/20">
                 <button
                     onClick={onClose}
                     className="absolute top-6 right-8 text-zinc-500 hover:text-white text-xl leading-none transition"

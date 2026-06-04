@@ -25,19 +25,19 @@ export default async function SortiesPage() {
 
     return (
         <main className="  pt-22   px-4">
-            <div className="max-w-4xl mx-auto text-center bg-zinc-100 p-6 border-2 rounded-2xl">
-                <h1 className="text-4xl text-center font-bold mb-4">Nos dernières sorties</h1>
+            <div className="max-w-4xl mx-auto text-center bg-zinc-100 p-3 sm:p-6 border-2 rounded-2xl">
+                <h1 className="text-3xl sm:text-4xl text-center font-bold mb-4">Nos dernières sorties</h1>
 
                 <div>
                     {articles.map((article) => (
-                        <article key={article.id} className="p-4">
-                            <h1 className="text-2xl font-bold">{article.title}</h1>
+                        <article key={article.id} className="p-2 sm:p-4">
+                            <h1 className="text-xl sm:text-2xl font-bold break-words">{article.title}</h1>
 
                             <p className="italic p-2">
                                 {new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(article.createdAt)}
                             </p>
 
-                            <p className="p-2">{article.content}</p>
+                            <p className="p-2 text-left break-words">{article.content}</p>
 
                             <ArticleCaroussel images={article.imageUrl} title={article.title} />
 

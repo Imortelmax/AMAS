@@ -38,17 +38,17 @@ export default function ArticleCaroussel({ images, title }: { images: ImageItem[
                 <>
                     <button
                         onClick={prevImage}
-                        className="absolute left-[-50px] top-1/2 -translate-y-1/2 p-2 text-zinc-400 hover:text-black transition"
+                        className="absolute left-2 md:left-[-50px] top-1/2 -translate-y-1/2 p-1 md:p-2 text-white md:text-zinc-400 bg-black/30 md:bg-transparent rounded-full md:rounded-none hover:text-black transition"
                         aria-label="Image précédente"
                     >
-                        <ChevronLeft size={48} strokeWidth={1} />
+                        <ChevronLeft size={32} strokeWidth={1.5} className="md:w-12 md:h-12" />
                     </button>
                     <button
                         onClick={nextImage}
-                        className="absolute right-[-50px] top-1/2 -translate-y-1/2 p-2 text-zinc-400 hover:text-black transition"
+                        className="absolute right-2 md:right-[-50px] top-1/2 -translate-y-1/2 p-1 md:p-2 text-white md:text-zinc-400 bg-black/30 md:bg-transparent rounded-full md:rounded-none hover:text-black transition"
                         aria-label="Image suivante"
                     >
-                        <ChevronRight size={48} strokeWidth={1} />
+                        <ChevronRight size={32} strokeWidth={1.5} className="md:w-12 md:h-12" />
                     </button>
                 </>
             )}

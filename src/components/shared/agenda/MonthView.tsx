@@ -14,6 +14,7 @@ interface MonthViewProps {
     events: EventData[];
 }
 
+const DAY_LABELS_SHORT = ["L", "M", "M", "J", "V", "S", "D"];
 const DAY_LABELS = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 
 export default function MonthView({ year, month, events }: MonthViewProps) {
@@ -46,10 +47,10 @@ export default function MonthView({ year, month, events }: MonthViewProps) {
     return (
         <div>
             {/* Header */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:justify-between mb-6">
                 <Link
                     href={`/agenda?year=${year}`}
-                    className="flex items-center gap-1 text-sm text-white/70 hover:text-white transition"
+                    className="flex items-center gap-1 text-sm text-white/70 hover:text-white transition self-start sm:self-auto"
                 >
                     <ChevronLeft className="w-4 h-4" />
                     Agenda
@@ -62,7 +63,7 @@ export default function MonthView({ year, month, events }: MonthViewProps) {
                     >
                         <ChevronLeft className="w-4 h-4 text-white" />
                     </Link>
-                    <h2 className="text-xl font-bold capitalize text-white min-w-[160px] text-center">
+                    <h2 className="text-lg sm:text-xl font-bold capitalize text-white text-center">
                         {format(firstDay, "MMMM yyyy", { locale: fr })}
                     </h2>
                     <Link
@@ -73,19 +74,20 @@ export default function MonthView({ year, month, events }: MonthViewProps) {
                     </Link>
                 </div>
 
-                <div className="w-16" />
+                <div className="hidden sm:block w-16" />
             </div>
 
             {/* Grid */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
                 {/* Day headers */}
                 <div className="grid grid-cols-7 border-b border-zinc-100">
-                    {DAY_LABELS.map((d) => (
+                    {DAY_LABELS.map((d, i) => (
                         <div
                             key={d}
                             className="text-center text-xs text-zinc-400 py-2 font-semibold"
                         >
-                            {d}
+                            <span className="hidden sm:inline">{d}</span>
+                            <span className="sm:hidden">{DAY_LABELS_SHORT[i]}</span>
                         </div>
                     ))}
                 </div>
@@ -100,7 +102,7 @@ export default function MonthView({ year, month, events }: MonthViewProps) {
                             return (
                                 <div
                                     key={`e-${i}`}
-                                    className={`min-h-[80px] bg-zinc-50
+                                    className={`min-h-[44px] sm:min-h-[80px] bg-zinc-50
                                         ${!isLastInRow ? "border-r border-zinc-100" : ""}
                                         ${!isLastRow ? "border-b border-zinc-100" : ""}
                                     `}
@@ -114,13 +116,13 @@ export default function MonthView({ year, month, events }: MonthViewProps) {
                         return (
                             <div
                                 key={day}
-                                className={`min-h-[80px] p-1.5
+                                className={`min-h-[44px] sm:min-h-[80px] p-0.5 sm:p-1.5
                                     ${!isLastInRow ? "border-r border-zinc-100" : ""}
                                     ${!isLastRow ? "border-b border-zinc-100" : ""}
                                 `}
                             >
                                 <div
-                                    className={`w-6 h-6 flex items-center justify-center rounded-full text-xs font-semibold mb-1
+                                    className={`w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center rounded-full text-[10px] sm:text-xs font-semibold mb-0.5 sm:mb-1
                                         ${todayCell
                                             ? "bg-amas-orange text-white"
                                             : "text-zinc-700"
@@ -133,9 +135,10 @@ export default function MonthView({ year, month, events }: MonthViewProps) {
                                         <button
                                             key={event.id}
                                             onClick={() => setSelectedEvent(event)}
-                                            className="text-left text-[10px] leading-tight bg-amas-orange text-white rounded px-1.5 py-0.5 truncate w-full hover:opacity-80 transition font-medium"
+                                            className="text-left text-[9px] sm:text-[10px] leading-tight bg-amas-orange text-white rounded px-1 sm:px-1.5 py-0.5 truncate w-full hover:opacity-80 transition font-medium"
                                         >
-                                            {event.title}
+                                            <span className="hidden sm:inline">{event.title}</span>
+                                            <span className="sm:hidden">•</span>
                                         </button>
                                     ))}
                                 </div>

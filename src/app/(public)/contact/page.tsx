@@ -21,8 +21,8 @@ export default function SortiesPage() {
 
                 <div className="flex flex-col items-center space-y-4 pb-4 m-10">
                     <div className="flex items-center space-x-2">
-                        <Facebook className="w-6 h-6" />
-                        <a href="https://www.facebook.com/profile.php?id=61558964401689&locale=fr_FR" target="_blank">Sur Facebook: AMAS - Amicale motos anciennes salernoise</a>
+                        <Facebook className="w-6 h-6 shrink-0" />
+                        <a href="https://www.facebook.com/profile.php?id=61558964401689&locale=fr_FR" target="_blank" className="break-words min-w-0">Sur Facebook: AMAS - Amicale motos anciennes salernoise</a>
                     </div>
                     <div className="flex items-center space-x-2">
                         <Mail className="w-6 h-6" />
@@ -33,7 +33,7 @@ export default function SortiesPage() {
                 {/* Mail form */}
                 <h1 className="text-center m-4">Ou alors en nous envoyant un mail directement avec ce formulaire</h1>
 
-                <div className="max-w-2xl mx-auto bg-zinc-100 p-10 border-1 border-zinc-400 rounded-[40px] shadow-xl">
+                <div className="max-w-2xl mx-auto bg-zinc-100 p-5 sm:p-10 border-1 border-zinc-400 rounded-2xl sm:rounded-[40px] shadow-xl">
 
                     {status === "success" ? (
                     <div className="bg-green-100 text-green-800 p-6 rounded-2xl text-center font-bold">
