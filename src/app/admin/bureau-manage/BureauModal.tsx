@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import { CldUploadWidget } from "next-cloudinary";
 import { addBureauMember, updateBureauMember } from "./actions";
-import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
+import { R2_FOLDERS } from "@/lib/r2";
+import FileUpload from "@/components/shared/FileUpload";
 import type { Member } from "@/types";
 import type { MemberRole } from "@/types";
 
@@ -35,11 +35,9 @@ export default function BureauModal({ member, onClose }: Props) {
     const updateById = isEdit ? updateBureauMember.bind(null, member.id) : null;
 
     async function handleSubmit(formData: FormData) {
-        if (!imageUrl) {
-            setError("Une photo est requise.");
-            return;
+        if (imageUrl) {
+            formData.set("imageUrl", imageUrl);
         }
-        formData.set("imageUrl", imageUrl);
         setLoading(true);
         setError(null);
         try {
@@ -109,31 +107,12 @@ export default function BureauModal({ member, onClose }: Props) {
                                 </button>
                             </div>
                         )}
-                        <CldUploadWidget
-                            uploadPreset={UPLOAD_PRESET}
-                            options={{
-                                folder: CLOUDINARY_FOLDERS.bureau,
-                                multiple: false,
-                                resourceType: "image",
-                                cropping: true,
-                                croppingAspectRatio: 1,
-                            }}
-                            onSuccess={(result) => {
-                                if (result.info && typeof result.info === "object" && "secure_url" in result.info) {
-                                    setImageUrl(result.info.secure_url as string);
-                                }
-                            }}
-                        >
-                            {({ open }) => (
-                                <button
-                                    type="button"
-                                    onClick={() => open()}
-                                    className="w-full py-3 border-2 border-dashed border-zinc-300 rounded-xl text-sm font-black uppercase text-zinc-400 hover:border-black hover:text-black transition-all"
-                                >
-                                    {imageUrl ? "Changer la photo" : "+ Ajouter une photo"}
-                                </button>
-                            )}
-                        </CldUploadWidget>
+                        <FileUpload
+                            folder={R2_FOLDERS.bureau}
+                            accept="image/*"
+                            label={imageUrl ? "Changer la photo" : "+ Ajouter une photo"}
+                            onUploaded={(urls) => setImageUrl(urls[0])}
+                        />
                     </div>
                     {error && <p className="text-red-600 text-sm font-bold">{error}</p>}
                     <div className="flex gap-3 pt-2">

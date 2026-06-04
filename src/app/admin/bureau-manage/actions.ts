@@ -12,7 +12,7 @@ export async function addBureauMember(formData: FormData) {
             firstname: formData.get("firstname") as string,
             lastname: formData.get("lastname") as string,
             phone: formData.get("phone") as string,
-            imageUrl: formData.get("imageUrl") as string,
+            imageUrl: (formData.get("imageUrl") as string) || "",
             role: roles,
         },
     });
@@ -29,7 +29,7 @@ export async function updateBureauMember(id: string, formData: FormData) {
             firstname: formData.get("firstname") as string,
             lastname: formData.get("lastname") as string,
             phone: formData.get("phone") as string,
-            imageUrl: formData.get("imageUrl") as string,
+            imageUrl: (formData.get("imageUrl") as string) || "",
             role: roles,
         },
     });

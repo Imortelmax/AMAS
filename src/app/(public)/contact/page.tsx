@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Mail, Phone } from "lucide-react";
+import { Facebook, Mail } from "lucide-react";
 import { useState } from "react";
 import { sendContactEmail } from "../../action/send-email";
 
@@ -27,10 +27,6 @@ export default function SortiesPage() {
                     <div className="flex items-center space-x-2">
                         <Mail className="w-6 h-6" />
                         <a href="mailto:contact.amas83@gmail.com">Par mail : contact.amas83@gmail.com</a>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Phone className="w-6 h-6" />
-                        <span>Par téléphone : 06 95 05 63 21</span>
                     </div>
                 </div>
 

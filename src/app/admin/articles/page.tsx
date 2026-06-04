@@ -19,7 +19,7 @@ export default async function ArticlesPage({
     const [articles, total] = await Promise.all([
         prisma.article.findMany({
             where,
-            include: { imageUrl: true },
+            include: { imageUrl: true, videos: true },
             orderBy: { createdAt: "desc" },
             skip,
             take: PER_PAGE,

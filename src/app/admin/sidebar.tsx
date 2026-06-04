@@ -55,7 +55,7 @@ export default function AdminSidebar() {
 
       <button
         onClick={() => signOut({ callbackUrl: "/" })}
-        className="flex items-center gap-4 px-4 py-4 rounded-2xl font-bold tracking-tight text-red-500 hover:bg-red-500/10 transition-all mt-auto"
+        className="flex items-center gap-4 px-4 py-4 rounded-2xl font-bold tracking-tight text-black hover:bg-zinc-900 hover:text-white transition-all mt-auto"
       >
         <LogOut size={22} />
         Déconnexion

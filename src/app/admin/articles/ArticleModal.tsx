@@ -2,15 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { CldUploadWidget } from "next-cloudinary";
 import { addArticle, updateArticle } from "./actions";
-import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
-import type { Article, ArticleImage } from "@/types";
+import { R2_FOLDERS } from "@/lib/r2";
+import FileUpload from "@/components/shared/FileUpload";
+import type { Article, ArticleImage, ArticleVideo } from "@/types";
 
-type ArticleWithImages = Article & { imageUrl: ArticleImage[] };
+type ArticleWithMedia = Article & { imageUrl: ArticleImage[]; videos: ArticleVideo[] };
 
 type Props = {
-    article?: ArticleWithImages;
+    article?: ArticleWithMedia;
     onClose: () => void;
 };
 
@@ -21,6 +21,9 @@ export default function ArticleModal({ article, onClose }: Props) {
     const [images, setImages] = useState<string[]>(
         article?.imageUrl.map((img) => img.url) ?? []
     );
+    const [videos, setVideos] = useState<string[]>(
+        article?.videos.map((v) => v.url) ?? []
+    );
 
     const isEdit = !!article;
     const updateArticleById = isEdit ? updateArticle.bind(null, article.id) : null;
@@ -29,6 +32,7 @@ export default function ArticleModal({ article, onClose }: Props) {
         setLoading(true);
         setError(null);
         images.forEach((url) => formData.append("imageUrl", url));
+        videos.forEach((url) => formData.append("videoUrl", url));
         try {
             if (isEdit && updateArticleById) {
                 await updateArticleById(formData);
@@ -120,30 +124,40 @@ export default function ArticleModal({ article, onClose }: Props) {
                                 ))}
                             </div>
                         )}
-                        <CldUploadWidget
-                            uploadPreset={UPLOAD_PRESET}
-                            options={{
-                                folder: CLOUDINARY_FOLDERS.articles,
-                                multiple: true,
-                                resourceType: "image",
-                            }}
-                            onSuccess={(result) => {
-                                const info = result.info;
-                                if (info && typeof info === "object" && "secure_url" in info) {
-                                    setImages((prev) => [...prev, (info as { secure_url: string }).secure_url]);
-                                }
-                            }}
-                        >
-                            {({ open }) => (
-                                <button
-                                    type="button"
-                                    onClick={() => open()}
-                                    className="w-full py-3 border-2 border-dashed border-zinc-300 rounded-xl text-sm font-black uppercase text-zinc-400 hover:border-black hover:text-black transition-all"
-                                >
-                                    + Ajouter des photos
-                                </button>
-                            )}
-                        </CldUploadWidget>
+                        <FileUpload
+                            folder={R2_FOLDERS.articles}
+                            multiple
+                            accept="image/*"
+                            label="+ Ajouter des photos"
+                            onUploaded={(urls) => setImages((prev) => [...prev, ...urls])}
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-xs font-black uppercase mb-2">Vidéos</label>
+                        {videos.length > 0 && (
+                            <div className="flex flex-col gap-2 mb-3">
+                                {videos.map((url, i) => (
+                                    <div key={i} className="relative group flex items-center gap-2 p-2 bg-zinc-100 rounded-xl border-2 border-zinc-200">
+                                        <span className="text-xs font-bold truncate flex-1 text-zinc-600">{url.split("/").pop()}</span>
+                                        <button
+                                            type="button"
+                                            onClick={() => setVideos((prev) => prev.filter((_, idx) => idx !== i))}
+                                            className="shrink-0 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center"
+                                        >
+                                            ×
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        <FileUpload
+                            folder={R2_FOLDERS.articles}
+                            multiple
+                            accept="video/mp4,video/webm,video/quicktime"
+                            label="+ Ajouter des vidéos"
+                            onUploaded={(urls) => setVideos((prev) => [...prev, ...urls])}
+                        />
                     </div>
 
                     {error && <p className="text-red-600 text-sm font-bold">{error}</p>}

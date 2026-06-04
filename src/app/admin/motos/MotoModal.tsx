@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { CldUploadWidget } from "next-cloudinary";
 import { addMoto, updateMoto } from "./actions";
-import { CLOUDINARY_FOLDERS, UPLOAD_PRESET } from "@/lib/cloudinary";
+import { R2_FOLDERS } from "@/lib/r2";
+import FileUpload from "@/components/shared/FileUpload";
 import type { Moto, MotoImage } from "@/types";
 
 type MotoWithImages = Moto & { images: MotoImage[] };
@@ -108,30 +108,13 @@ export default function MotoModal({ moto, onClose }: Props) {
                                 ))}
                             </div>
                         )}
-                        <CldUploadWidget
-                            uploadPreset={UPLOAD_PRESET}
-                            options={{
-                                folder: CLOUDINARY_FOLDERS.motos,
-                                multiple: true,
-                                resourceType: "image",
-                            }}
-                            onSuccess={(result) => {
-                                const info = result.info;
-                                if (info && typeof info === "object" && "secure_url" in info) {
-                                    setImages((prev) => [...prev, (info as { secure_url: string }).secure_url]);
-                                }
-                            }}
-                        >
-                            {({ open }) => (
-                                <button
-                                    type="button"
-                                    onClick={() => open()}
-                                    className="w-full py-3 border-2 border-dashed border-zinc-300 rounded-xl text-sm font-black uppercase text-zinc-400 hover:border-black hover:text-black transition-all"
-                                >
-                                    + Ajouter des photos
-                                </button>
-                            )}
-                        </CldUploadWidget>
+                        <FileUpload
+                            folder={R2_FOLDERS.motos}
+                            multiple
+                            accept="image/*"
+                            label="+ Ajouter des photos"
+                            onUploaded={(urls) => setImages((prev) => [...prev, ...urls])}
+                        />
                     </div>
 
                     {error && <p className="text-red-600 text-sm font-bold">{error}</p>}

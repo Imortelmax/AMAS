@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Article, ArticleImage } from "@/types";
+import type { Article, ArticleImage, ArticleVideo } from "@/types";
 import { deleteArticle, togglePublished } from "./actions";
 import ArticleModal from "./ArticleModal";
 
-type ArticleWithImages = Article & { imageUrl: ArticleImage[] };
+type ArticleWithImages = Article & { imageUrl: ArticleImage[]; videos: ArticleVideo[] };
 
 const TYPE_LABELS = {
     sortie: "Sortie",

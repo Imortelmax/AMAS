@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 
 export async function addArticle(formData: FormData) {
     const imageUrls = formData.getAll("imageUrl") as string[];
+    const videoUrls = formData.getAll("videoUrl") as string[];
 
     await prisma.article.create({
         data: {
@@ -16,6 +17,9 @@ export async function addArticle(formData: FormData) {
             imageUrl: {
                 create: imageUrls.filter(Boolean).map((url) => ({ url })),
             },
+            videos: {
+                create: videoUrls.filter(Boolean).map((url) => ({ url })),
+            },
         },
     });
     revalidatePath("/admin/articles");
@@ -25,9 +29,11 @@ export async function addArticle(formData: FormData) {
 
 export async function updateArticle(id: string, formData: FormData) {
     const imageUrls = formData.getAll("imageUrl") as string[];
+    const videoUrls = formData.getAll("videoUrl") as string[];
 
     await prisma.$transaction([
         prisma.articleImage.deleteMany({ where: { articleId: id } }),
+        prisma.articleVideo.deleteMany({ where: { articleId: id } }),
         prisma.article.update({
             where: { id },
             data: {
@@ -37,6 +43,9 @@ export async function updateArticle(id: string, formData: FormData) {
                 published: formData.get("published") === "true",
                 imageUrl: {
                     create: imageUrls.filter(Boolean).map((url) => ({ url })),
+                },
+                videos: {
+                    create: videoUrls.filter(Boolean).map((url) => ({ url })),
                 },
             },
         }),
@@ -48,6 +57,7 @@ export async function updateArticle(id: string, formData: FormData) {
 
 export async function deleteArticle(id: string) {
     await prisma.articleImage.deleteMany({ where: { articleId: id } });
+    await prisma.articleVideo.deleteMany({ where: { articleId: id } });
     await prisma.article.delete({ where: { id } });
     revalidatePath("/admin/articles");
     revalidatePath("/sorties");

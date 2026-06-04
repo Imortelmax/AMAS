@@ -19,16 +19,6 @@ export default function HistoryPage() {
                     pour les passionnés de tous âges, offrant un espace convivial pour partager notre amour commun pour les 
                     motos anciennes et leur histoire riche.
                 </p>
-                <h5 className="text-2xl font-bold mt-8 mb-4">Historique de nos présidents :</h5>
-                <ul className="text-xl">
-                    <li>2001 - 2008: Giger Jean Louis</li>
-                    <li>2008 - 2009: Philipe Fournier</li>
-                    <li>2010 - 2014: Giger Jean Louis</li>
-                    <li>2014 - 2014: Leborgne Remy pendant 6 mois</li>
-                    <li>2014 - 2019: Giger Jean Louis</li>
-                    <li>2019 - 2023: Leborgne Remy</li>
-                    <li>2023 - Présent: Guibergia Adrien</li>
-                </ul>
             </div>
         </main>
     );

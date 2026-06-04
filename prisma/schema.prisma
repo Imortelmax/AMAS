@@ -53,6 +53,7 @@ model Article {
   type      ArticleType    @default(sortie)
   published Boolean        @default(false)
   imageUrl  ArticleImage[]
+  videos    ArticleVideo[]
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
 }
@@ -62,6 +63,13 @@ model ArticleImage {
   articleId String
   url       String
   article   Article  @relation(fields: [articleId], references: id)
+}
+
+model ArticleVideo {
+  id        String   @id @default(cuid())
+  articleId String
+  url       String
+  article   Article  @relation(fields: [articleId], references: [id])
 }
 
 model Moto {

@@ -21,6 +21,12 @@ export type ArticleImage = {
     url: string;
 };
 
+export type ArticleVideo = {
+    id: string;
+    articleId: string;
+    url: string;
+};
+
 export type Article = {
     id: string;
     title: string;
